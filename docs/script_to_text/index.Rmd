@@ -1,0 +1,76 @@
+---
+title: "script_to_text"
+author: "Irene Morse"
+date: "2023-07-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+In a recent project I needed to write some scripts for videos that were going to be recorded and included as part of a [MOOC](https://en.wikipedia.org/wiki/Massive_open_online_course).
+
+The good news was that the MOOC developer already had delivered some Zoom lectures that more-or-less covered the topics for the scripts.
+
+The bad news was that the Zoom scripts were in .srt format with the text divided up into time chunks.
+
+This was a rare case where I wanted to go from more information to less information, i.e. get rid of the time chunks and .srt formatting and convert everything into a more readable and editable blob of text.
+
+This blob of text would give me an easy starting point for creating a more polished script that could be used in the MOOC.
+
+## The Code
+
+First we read in and inspect the .srt file.
+
+```{r}
+# read in
+script_raw <- readLines('C:/Users/irene/Documents/GitHub/ISM_Portfolio/docs/script_to_text/GMT20230719-185150_Recording.transcript.vtt')
+# inspect
+head(script_raw, 9)
+```
+
+Next we create a function that will perform some basic text manipulations.
+
+```{r}
+script_to_blob <- function(script, one_speaker=TRUE){
+  # check for and remove title if there
+  if(!(grepl("\\d\\d:\\d\\d:\\d\\d.\\d\\d\\d", script_raw[1]))){
+  script_raw <- script_raw[-1]
+  }
+  # identify and remove empty lines
+  script_raw <- script_raw[-which(grepl("^$", script_raw)==TRUE)]
+  # identify and remove section numbers
+  script_raw <- script_raw[-which(grepl("^\\d+$", script_raw)==TRUE)]
+  # identify and remove timestamps
+  script_raw <- script_raw[-which(grepl("\\d\\d:\\d\\d:\\d\\d.\\d\\d\\d", script_raw)==TRUE)]
+  if(one_speaker==TRUE){
+    # remove speaker's name
+    script_raw <- gsub(".+: ", "", script_raw[1])
+    # paste lines together into one coherent string
+    blob <- paste(script_raw, collapse=" ")
+  }else if(one_speaker==FALSE){
+    # paste lines together with each line representing a new speaker
+    blob <- paste(script_raw, collapse="\\n")
+  }
+  return(blob)
+}
+```
+
+```{r}
+script_text <- script_to_blob(script_raw, one_speaker = TRUE)
+print(script_text)
+```
+
+Write out the text as a new file and it's now ready to edit in your word processor of choice! Voila!
+
+```{r}
+# write out
+writeLines(script_text, 'C:/Users/irene/Documents/GitHub/ISM_Portfolio/docs/script_to_text/editable_script.txt')
+```
+
+## Planned Updates
+
+Scripts come in a variety of formats. Eventually I'd like to create a more generalized function that can convert scripts of any user-specified format into text blobs, or perhaps that can convert scripts from one user-specified format into another.
