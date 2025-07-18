@@ -1,29 +1,17 @@
 ---
-title: "tester"
+#title: "index"
 output: html_document
-date: "2023-07-19"
+#date: "2025-07-18"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+# Welcome to my GitHub portfolio site!
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Explore my portfolio posts by clicking the links below:
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+-[Tidy Tuesday for July 8th, 2025: The XKCD Color Survey](https://irenemorse.github.io/ISM_Portfolio/TT_07.08.25/)
 
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+-[Tidy Tuesday for July 15th, 2025: Funding for the British Library](https://irenemorse.github.io/ISM_Portfolio/TT_07.15.25/)
