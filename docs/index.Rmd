@@ -12,6 +12,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Explore my portfolio posts by clicking the links below:
 
--[Tidy Tuesday for July 8th, 2025: The XKCD Color Survey](https://irenemorse.github.io/ISM_Portfolio/TT_07.08.25/)
+* [Tidy Tuesday for July 22nd, 2025: MTA Permanent Art Catalog](https://irenemorse.github.io/ISM_Portfolio/TT_07.22.25/)
 
--[Tidy Tuesday for July 15th, 2025: Funding for the British Library](https://irenemorse.github.io/ISM_Portfolio/TT_07.15.25/)
+* [Tidy Tuesday for July 15th, 2025: Funding for the British Library](https://irenemorse.github.io/ISM_Portfolio/TT_07.15.25/)
+
+* [Tidy Tuesday for July 8th, 2025: The XKCD Color Survey](https://irenemorse.github.io/ISM_Portfolio/TT_07.08.25/)
